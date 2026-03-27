@@ -6,7 +6,10 @@
   --text-primary: #f7f7f7;
   --text-secondary: #9ca3af;
   --border-color: #374151;
-  --accent-color: #ffffff;
+  --accent-color: #2dd4bf;
+  --accent-color-strong: #14b8a6;
+  --accent-muted: rgba(45, 212, 191, 0.16);
+  --accent-glow: rgba(45, 212, 191, 0.35);
 }
 
 body {
@@ -17,12 +20,78 @@ body {
     radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
     radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
   background-size: 100% 100%;
-  line-height: 1.6;
+  line-height: 1.65;
+  font-size: 1.03rem;
 }
 
 h1, h2, h3 {
   font-family: 'Cutive Mono', monospace;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.035em;
+}
+
+.hero-section {
+  position: relative;
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 16px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background:
+    radial-gradient(circle at top, rgba(45, 212, 191, 0.12), transparent 58%),
+    linear-gradient(180deg, rgba(13, 13, 13, 0.7), rgba(13, 13, 13, 0.25));
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+.hero-kicker {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 7.5vw, 5.4rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+  line-height: 1.45;
+  color: #d7dce1;
+}
+
+.hero-value {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #b8c0cc;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.hero-secondary-cta {
+  color: #d8f7f2;
+  border: 1px solid rgba(45, 212, 191, 0.45);
+  border-radius: 4px;
+  background: rgba(45, 212, 191, 0.08);
+  transition: all 0.3s ease;
+}
+
+.hero-secondary-cta:hover {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+  background: rgba(45, 212, 191, 0.2);
+  transform: translateY(-1px);
 }
 
 /* Scroll Progress Indicator */
@@ -32,15 +101,15 @@ h1, h2, h3 {
   left: 0;
   width: 0%;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-color), rgba(255, 255, 255, 0.8));
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-color-strong));
   z-index: 1000;
   transition: width 0.1s ease;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .scroll-progress.complete {
   background: linear-gradient(90deg, var(--accent-color), var(--accent-color));
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px var(--accent-glow);
   animation: progress-complete 0.5s ease;
 }
 
@@ -73,7 +142,7 @@ h1, h2, h3 {
   background: var(--accent-color);
   color: var(--bg-primary);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 15px var(--accent-glow);
 }
 
 .back-to-top.hidden {
@@ -170,7 +239,7 @@ h1, h2, h3 {
 /* Classic Button Style */
 .classic-button {
   position: relative;
-  background: transparent;
+  background: rgba(45, 212, 191, 0.06);
   color: var(--accent-color);
   border: 2px solid var(--accent-color);
   padding: 0.75rem 2rem;
@@ -183,8 +252,8 @@ h1, h2, h3 {
 
 .classic-button:hover {
   background: var(--accent-color);
-  color: var(--bg-primary);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  color: #062221;
+  box-shadow: 0 8px 22px var(--accent-glow);
 }
 
 .classic-button::before {
@@ -204,7 +273,7 @@ h1, h2, h3 {
 
 /* Enhanced Project Cards */
 .project-card {
-  border: 1px solid #374151;
+  border: 1px solid rgba(45, 212, 191, 0.18);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -225,10 +294,10 @@ h1, h2, h3 {
 }
 
 .project-card:hover {
-  border-color: #9ca3af;
+  border-color: var(--accent-color);
   transform: translateY(-4px); /* Reduced movement */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Simplified shadow */
-  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(45, 212, 191, 0.15);
+  background: rgba(10, 14, 14, 0.7);
 }
 
 .project-card:hover::before {
@@ -236,8 +305,8 @@ h1, h2, h3 {
 }
 
 .project-card:hover h3 {
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  color: #ecfffb;
+  text-shadow: 0 0 14px rgba(45, 212, 191, 0.36);
 }
 
 /* Classic Header */
@@ -1023,11 +1092,11 @@ h1, h2, h3 {
 /* Project Tags */
 .project-tag {
   font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(45, 212, 191, 0.07);
   color: var(--text-primary);
   padding: 0.5rem 0.9rem;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(45, 212, 191, 0.24);
   transition: all 0.3s ease;
   font-family: 'Inconsolata', monospace;
   font-weight: 500;
@@ -1036,10 +1105,10 @@ h1, h2, h3 {
 }
 
 .project-tag:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(45, 212, 191, 0.15);
+  border-color: rgba(45, 212, 191, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
 }
 
 /* Clean Section Styling */
@@ -1050,6 +1119,8 @@ section {
 section h2 {
   position: relative;
   margin-bottom: 3rem;
+  font-size: clamp(2rem, 4.2vw, 3.1rem) !important;
+  line-height: 1.15;
 }
 
 section h2::after {
@@ -1066,6 +1137,91 @@ section h2::after {
 .section-border {
   border-top: 1px solid var(--border-color);
   position: relative;
+}
+
+.section-intro {
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.compact-credentials {
+  display: grid;
+  gap: 1rem;
+}
+
+.compact-credential {
+  padding: 1.4rem 1.5rem;
+}
+
+.compact-credential .education-title {
+  font-size: 1.35rem;
+  margin-bottom: 0.4rem;
+}
+
+.compact-credential .education-subtitle {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.compact-credential .education-date {
+  font-size: 0.95rem;
+  color: #b9c3ce;
+}
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.certificate-card {
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 10px;
+  padding: 0.8rem;
+  text-align: left;
+  transition: all 0.28s ease;
+  cursor: pointer;
+  color: inherit;
+}
+
+.certificate-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(45, 212, 191, 0.2);
+}
+
+.certificate-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.75rem;
+}
+
+.certificate-title {
+  display: block;
+  font-family: 'Cutive Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.certificate-subtitle {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+.inline-link {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-color: rgba(45, 212, 191, 0.5);
+}
+
+.inline-link:hover {
+  color: #8af5e7;
 }
 
 /* Animation control classes */
@@ -1258,12 +1414,40 @@ textarea:focus-visible {
   }
   
   h1 {
-    font-size: 2rem !important;
+    font-size: 2.2rem !important;
     line-height: 1.2;
   }
   
   h2 {
-    font-size: 2.5rem !important;
+    font-size: 2.1rem !important;
+  }
+
+  .hero-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.45rem, 10vw, 3.6rem) !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.06rem;
+  }
+
+  .hero-value {
+    font-size: 0.96rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .classic-button,
+  .hero-actions .hero-secondary-cta {
+    width: 100%;
+    text-align: center;
   }
   
   section {
@@ -1446,6 +1630,11 @@ textarea:focus-visible {
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     display: inline-block;
+  }
+
+  .certificate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
   }
 }
 
@@ -2164,6 +2353,14 @@ bile Responsiveness for Terminal Memory Board */
 }
 
 @media (max-width: 480px) {
+  .certificate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-card {
+    padding: 0.7rem;
+  }
+
   .terminal-memory-board {
     padding: 0.5rem;
     gap: 1.5rem;

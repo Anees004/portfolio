@@ -694,7 +694,7 @@ if ('serviceWorker' in navigator) {
 
 // Archive Drawer Gallery
 function initAchievementGallery() {
-  const photos = document.querySelectorAll('.terminal-photo');
+  const photos = document.querySelectorAll('.certificate-card, .terminal-photo');
   const viewer = document.getElementById('photo-viewer');
   const viewerImage = document.getElementById('viewer-image');
   const viewerTitle = document.getElementById('viewer-title');
